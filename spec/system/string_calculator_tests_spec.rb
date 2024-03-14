@@ -5,5 +5,10 @@ RSpec.describe "StringCalculatorTests", type: :system do
     driven_by(:rack_test)
   end
 
-  pending "add some scenarios (or delete) #{__FILE__}"
+  it "it convert string to number" do
+    visit '/home/index'
+    fill_in 'Number_string', with: " '','1', '1,2' "
+
+    click_on 'Convert'
+  end
 end
