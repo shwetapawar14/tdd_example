@@ -1,0 +1,7 @@
+<%= form_with url: "/convert", method: :get do  |f| %>
+    <div>
+      <h4>Please enter a string of comma separated numbers </h4>
+      <%= f.text_field :number_string %>
+      <%= f.submit "Convert" %>
+    </div>
+<% end %>

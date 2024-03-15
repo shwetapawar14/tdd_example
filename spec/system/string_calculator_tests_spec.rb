@@ -6,9 +6,12 @@ RSpec.describe "StringCalculatorTests", type: :system do
   end
 
   it "it convert string to number" do
-    visit '/home/index'
-    fill_in 'Number_string', with: " '','1', '1,2' "
+    visit '/'
+    fill_in 'Number_string', with: " '','1', '2' "
 
+    click_on 'Convert'
+
+    fill_in 'Number_string', with: " '','1', '1,2' "
     click_on 'Convert'
   end
 end
