@@ -7,30 +7,29 @@ RSpec.describe "StringCalculatorTests", type: :system do
 
   it "it convert string to number" do
     visit '/'
-    fill_in 'number_string', with: " '','1', '2' "
-
+    fill_in 'number_string', with: '"", "1", "1,5"'
     click_on 'Convert'
-    expect(page).to have_content('0,1,2')
-    fill_in 'number_string', with: " '','1', '1,2' "
-    click_on 'Convert'
-    expect(page).to have_content('0,1,3')
+    expect(page).to have_content('0,1,6')
 
+    visit '/'
     fill_in 'number_string', with: "1\n2,3"
     click_on 'Convert'
     expect(page).to have_content('6')
 
+    visit '/'
     fill_in 'number_string', with: "1,\n"
     click_on 'Convert'
     expect(page).to have_content('Invalid Input')
 
+    visit '/'
     fill_in 'number_string', with: "//;\n1;2"
     click_on 'Convert'
     expect(page).to have_content('3')
 
-    
-    fill_in 'number_string', with: " '','1', '-2' ,'-3'"
+    visit '/'
+    fill_in 'number_string', with: ' "","1", "-2" ,"-3"'
     click_on 'Convert'
-    expect(page).to have_content('0, 1, Negative number not allowed -2, Negative Number not allowed -3')
+    expect(page).to have_content('0,1,Negative number not allowed -2,Negative Number not allowed -3')
 
   end
 end
