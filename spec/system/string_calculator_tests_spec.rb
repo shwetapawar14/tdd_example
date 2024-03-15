@@ -10,8 +10,9 @@ RSpec.describe "StringCalculatorTests", type: :system do
     fill_in 'Number_string', with: " '','1', '2' "
 
     click_on 'Convert'
-
+    expect(page).to have_content('0,1,2')
     fill_in 'Number_string', with: " '','1', '1,2' "
     click_on 'Convert'
+    expect(page).to have_content('0,1,3')
   end
 end
