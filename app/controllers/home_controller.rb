@@ -14,6 +14,11 @@ class HomeController < ApplicationController
     end
     
     def add_number(str)
-        return str.to_i
+        if str.include?(',')
+            str = str.split(',')
+            return str.inject(:+)
+        else
+            return str.to_i
+        end
     end
 end
